@@ -1,1 +1,2 @@
-"# nodejs-fastify-checkout-api-spectator" 
+"# nodejs-fastify-checkout-api-spectator"
+yarn start
