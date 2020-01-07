@@ -1,6 +1,6 @@
 // import and init server
 const fastify = require('fastify')();
-
+require('dotenv').config();
 // routes
 fastify.register(require('./routes/checkout'));
 
