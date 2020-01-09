@@ -9,7 +9,6 @@ const SPECIAL_APPLE_10PC = (items) => {
 };
 const SPECIAL_3_MILKS_50CENT = (items) => {
 	// return 50 cents if there are more than 3 milks
-
 	const discountTotal = countOccurencesOfObjInArray(items, PRODUCTS.milk) >= 3 ? 50 : 0;
 	return discountTotal;
 };
@@ -28,7 +27,7 @@ const DISCOUNT_SUMMARY = (items) => {
 			const offerResult = ALL_OFFERS[current](items);
 			if (offerResult > 0) {
 				result.discounts.push(current);
-				result.discountAmt += offerResult;
+				result.discountAmt += offerResult / 100;
 			}
 			return result;
 		},
