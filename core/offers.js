@@ -20,13 +20,20 @@ const ALL_OFFERS = {
 };
 
 const DISCOUNT_SUMMARY = (items) => {
-	return Object.keys(ALL_OFFERS).reduce((result, current) => {
-		const validOffers = ALL_OFFERS[current](items);
-		if (validOffers > 0) {
-			result[current] = validOffers;
-		}
-		return result;
-	}, {});
+	// grab each key (string message) from every offer
+	// apply the reducer function to each of the offers in ALL OFFERS
+	//
+	return Object.keys(ALL_OFFERS).reduce(
+		(result, current) => {
+			const offerResult = ALL_OFFERS[current](items);
+			if (offerResult > 0) {
+				result.discounts.push(current);
+				result.discountAmt += offerResult;
+			}
+			return result;
+		},
+		{ discounts: [], discountAmt: 0 }
+	);
 };
 
 module.exports = DISCOUNT_SUMMARY;

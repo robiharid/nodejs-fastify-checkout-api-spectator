@@ -9,17 +9,20 @@ async function routes(fastify, options) {
 
 		const mappedItems = req.query.items.map((item) => PRODUCTS[item.toLowerCase()]);
 		const DISCOUNT_SUMMARY = require('../core/offers')(mappedItems);
-		console.log(DISCOUNT_SUMMARY);
+		const { discounts } = DISCOUNT_SUMMARY;
+		let { discountAmt } = DISCOUNT_SUMMARY;
+		discountAmt = discountAmt / 100;
 
 		const reducer = (acc, curr) => acc + curr.price;
 		const subtotal = (mappedItems.reduce(reducer, 0) * USER_USD_CURRENCY_VALUE / 100).toFixed(2);
 
+		const total = subtotal - discountAmt;
 		res.send({
 			items: mappedItems,
 			subtotal: subtotal,
-			discounts: [ 'Apples 10% off' ],
-			discountAmt: 0.09,
-			total: 0.0,
+			discounts: discounts,
+			discountAmt: discountAmt,
+			total: total,
 			currency: USER_ISO_CURRENCY_STRING
 		});
 	});
