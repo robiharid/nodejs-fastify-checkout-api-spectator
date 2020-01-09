@@ -1,8 +1,9 @@
 const PRODUCTS = {
-  soup: 65,
-  bread: 80,
-  milk: 115,
-  apples: 100
+	soup: { id: 'soup', price: 65 },
+	oranges: { id: 'oranges', price: 100 },
+	bread: { id: 'bread', price: 80 },
+	milk: { id: 'milk', price: 115 },
+	apples: { id: 'apples', price: 100 }
 };
 
 module.exports = PRODUCTS;
