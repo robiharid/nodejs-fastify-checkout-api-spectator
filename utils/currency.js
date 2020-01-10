@@ -5,7 +5,7 @@ const FORMAT_NUMBER = 1;
 
 const axios = require('axios');
 
-const GetExchangeRate = async () => {
+const getExchangeRate = async () => {
 	try {
 		// rate limit reached with currency layer
 		// 		const response = await axios.get(
@@ -27,8 +27,8 @@ const GetExchangeRate = async () => {
 	}
 };
 
-const GetCurrencyValue = async (userCurrency) => {
-	const CURRENT_RATE = await GetExchangeRate();
+const getCurrencyValue = async (userCurrency) => {
+	const CURRENT_RATE = await getExchangeRate();
 	switch (userCurrency) {
 		case 'GBP':
 			return CURRENT_RATE.GBP;
@@ -40,4 +40,4 @@ const GetCurrencyValue = async (userCurrency) => {
 			return;
 	}
 };
-module.exports = GetCurrencyValue;
+module.exports = getCurrencyValue;
