@@ -44,7 +44,6 @@ async function routes(fastify, options) {
 		const total = subtotal - discountAmt;
 
 		res.send({
-			items: mappedItems,
 			subtotal: subtotal,
 			discounts: discounts,
 			discountAmt: discountAmt,
